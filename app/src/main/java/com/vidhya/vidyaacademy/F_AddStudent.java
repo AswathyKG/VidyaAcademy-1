@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,8 +28,11 @@ import android.widget.Toast;
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.basgeekball.awesomevalidation.ValidationStyle;
 import com.basgeekball.awesomevalidation.utility.RegexTemplate;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -38,6 +43,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
@@ -52,8 +58,9 @@ public class F_AddStudent extends Fragment implements AdapterView.OnItemSelected
     public AddStudent_adapter addStudent_adapter;
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    FirebaseStorage storage;
-    StorageReference storageReference;
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+    // Create a storage reference from our app
+    StorageReference storageRef = storage.getReference();
     String name, email, pname,address,userid,studregno;
     String classname;
     private AwesomeValidation awesomeValidation;
@@ -143,9 +150,36 @@ public class F_AddStudent extends Fragment implements AdapterView.OnItemSelected
                 pname = edt_addstud_pname.getText().toString();
                 classname =edt_addstud_class.getText().toString();
 
+                Bitmap image=((BitmapDrawable)Addstudent_choosen_imageview.getDrawable()).getBitmap();
+               final StorageReference imagesRef = storageRef.child("students/"+"rajan"+".jpg");
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                image.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+                byte[] data = baos.toByteArray();
 
+               UploadTask uploadTask = imagesRef.putBytes(data);
 
+                Task<Uri> urlTask = uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                    @Override
+                    public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
+                        if (!task.isSuccessful()) {
+                            throw task.getException();
+                        }
 
+                        // Continue with the task to get the download URL
+                        return imagesRef.getDownloadUrl();
+                    }
+                }).addOnCompleteListener(new OnCompleteListener<Uri>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Uri> task) {
+                        if (task.isSuccessful()) {
+                            Uri downloadUri = task.getResult();
+                            Log.e("MASTER",downloadUri.toString());
+                        } else {
+                            // Handle failures
+                            // ...
+                        }
+                    }
+                });
 
                 /*Log.e( "NAME",name );
                 addAdminPojo.setName( name );
@@ -170,32 +204,6 @@ public class F_AddStudent extends Fragment implements AdapterView.OnItemSelected
                                 final ProgressDialog progressDialog = new ProgressDialog(getActivity());
                                 progressDialog.setTitle("Uploading...");
                                 progressDialog.show();
-                                storage=FirebaseStorage.getInstance("gs://vidyaacademy-c5e8d.appspot.com");
-                                StorageReference ref = storageReference.child("students");
-                                ref.putFile(filePath)
-
-                                        .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                            @Override
-                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                                progressDialog.dismiss();
-                                                Toast.makeText(getActivity(), "Uploaded", Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnFailureListener(new OnFailureListener() {
-                                            @Override
-                                            public void onFailure(@NonNull Exception e) {
-                                                progressDialog.dismiss();
-                                                Toast.makeText(getActivity(), "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                            }
-                                        })
-                                        .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                            @Override
-                                            public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                                                double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
-                                                        .getTotalByteCount());
-                                                progressDialog.setMessage("Uploaded "+(int)progress+"%");
-                                            }
-                                        });
 
 
 

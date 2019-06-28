@@ -211,7 +211,7 @@ public class Principal extends FragmentActivity
             startActivity(i);*/
             Bundle bundle1=new Bundle();
             bundle1.putString( "AdminID",userid );
-            addFragment(new F_Princi_Approved(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+           // addFragment(new F_Princi_Approved(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
 
 
         }
