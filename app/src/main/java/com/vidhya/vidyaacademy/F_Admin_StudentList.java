@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -82,7 +83,7 @@ public class F_Admin_StudentList extends Fragment {
                     arrayList.add(adminStudCardDetails);
 
                 }
-                RecyclerViewForStudentInfo_admin playAdapter = new RecyclerViewForStudentInfo_admin(getActivity(), arrayList,UID);
+                RecyclerViewForStudentInfo_admin playAdapter = new RecyclerViewForStudentInfo_admin((FragmentActivity)getActivity(), arrayList,UID);
                 recyclerforstudcard.setAdapter(playAdapter);
 
             }

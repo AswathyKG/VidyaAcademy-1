@@ -17,7 +17,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewFor_PendingClasslist extends RecyclerView.Adapter<RecyclerViewFor_PendingClasslist.ViewHolder> {
+public class RecyclerViewFor_PendingClasslist_Admin extends RecyclerView.Adapter<RecyclerViewFor_PendingClasslist_Admin.ViewHolder> {
 
 
     TextView tv_pending_classlist_class_name ;
@@ -25,7 +25,7 @@ public class RecyclerViewFor_PendingClasslist extends RecyclerView.Adapter<Recyc
     Context context;
     String AdminID;
 
-    public RecyclerViewFor_PendingClasslist(Context context, ArrayList<Pending_Classlist_Adpter> arrayList, String adminID){
+    public RecyclerViewFor_PendingClasslist_Admin(Context context, ArrayList<Pending_Classlist_Adpter> arrayList, String adminID){
         this.list = arrayList;
         this.context = context;
         this.AdminID=adminID;
@@ -33,14 +33,14 @@ public class RecyclerViewFor_PendingClasslist extends RecyclerView.Adapter<Recyc
 
     @NonNull
     @Override
-    public RecyclerViewFor_PendingClasslist.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_pending_classlist_card, viewGroup, false);
+    public RecyclerViewFor_PendingClasslist_Admin.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_pending_classlist_card_admin, viewGroup, false);
 
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewFor_PendingClasslist.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull RecyclerViewFor_PendingClasslist_Admin.ViewHolder viewHolder, final int i) {
         final int j;
         final CardView cardView = viewHolder.cardView;
 
@@ -72,7 +72,7 @@ public class RecyclerViewFor_PendingClasslist extends RecyclerView.Adapter<Recyc
                 FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame_admin, fragment);
-                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.addToBackStack("true");
                 // fragmentTransaction.commit();*/
 
                 fragmentTransaction.commit();

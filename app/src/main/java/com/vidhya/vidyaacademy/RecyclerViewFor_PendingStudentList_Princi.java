@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecyclerViewForPendingStudentList extends RecyclerView.Adapter<RecyclerViewForPendingStudentList.ViewHolder> {
+public class RecyclerViewFor_PendingStudentList_Princi extends RecyclerView.Adapter<RecyclerViewFor_PendingStudentList_Princi.ViewHolder> {
     TextView Student_Name, RegNo, Email, Adddress;
     CircleImageView iv_student_photo;
     ArrayList<Pending_Studlist_Adapter> list;
@@ -29,7 +29,7 @@ public class RecyclerViewForPendingStudentList extends RecyclerView.Adapter<Recy
     String AdminID;
     String ClassID;
 
-    public RecyclerViewForPendingStudentList(Context context, ArrayList<Pending_Studlist_Adapter> arrayList, String ClassID, String AdminID) {
+    public RecyclerViewFor_PendingStudentList_Princi(Context context, ArrayList<Pending_Studlist_Adapter> arrayList, String ClassID, String AdminID) {
         this.list = arrayList;
         this.context = context;
         this.ClassID = ClassID;
@@ -40,13 +40,13 @@ public class RecyclerViewForPendingStudentList extends RecyclerView.Adapter<Recy
 
     @NonNull
     @Override
-    public RecyclerViewForPendingStudentList.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_pending_studentlist_card, viewGroup, false);
-        return new RecyclerViewForPendingStudentList.ViewHolder(view);
+    public RecyclerViewFor_PendingStudentList_Princi.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_pending_studentlist_card_princi, viewGroup, false);
+        return new RecyclerViewFor_PendingStudentList_Princi.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewForPendingStudentList.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull RecyclerViewFor_PendingStudentList_Princi.ViewHolder viewHolder, final int i) {
         final int j;
         final CardView cardView = viewHolder.cardView;
         final Context context = cardView.getContext();
@@ -81,12 +81,12 @@ public class RecyclerViewForPendingStudentList extends RecyclerView.Adapter<Recy
                 bundle3.putString("RegNo",list.get( i ).getPhno() );
 
 
-                Fragment fragment = new F_Admin_Pending_StudentDetails();
+                Fragment fragment = new F_Princi_Pending_StudentDetails();
                 //FragmentManager fragmentManager = getFragmentManager();;
                 fragment.setArguments( bundle3 );
                 FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_admin, fragment);
+                fragmentTransaction.replace(R.id.frame_princi, fragment);
                 fragmentTransaction.addToBackStack(null);
                 // fragmentTransaction.commit();*/
 

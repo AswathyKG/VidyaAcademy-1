@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class RecyclerViewForApprovedStudentList extends RecyclerView.Adapter<RecyclerViewForApprovedStudentList.ViewHolder> {
+public class RecyclerViewFor_ApprovedStudentList_Princi extends RecyclerView.Adapter<RecyclerViewFor_ApprovedStudentList_Princi.ViewHolder> {
     TextView Student_Name, RegNo, Email, Adddress;
     CircleImageView iv_student_photo_ap;
     ArrayList<Approved_Studlist_Adapter> list;
@@ -29,7 +29,7 @@ public class RecyclerViewForApprovedStudentList extends RecyclerView.Adapter<Rec
     String AdminID;
     String ClassID;
 
-    public RecyclerViewForApprovedStudentList(Context context, ArrayList<Approved_Studlist_Adapter> arrayList, String ClassID, String AdminID) {
+    public RecyclerViewFor_ApprovedStudentList_Princi(Context context, ArrayList<Approved_Studlist_Adapter> arrayList, String ClassID, String AdminID) {
         this.list = arrayList;
         this.context = context;
         this.ClassID = ClassID;
@@ -40,13 +40,13 @@ public class RecyclerViewForApprovedStudentList extends RecyclerView.Adapter<Rec
 
     @NonNull
     @Override
-    public RecyclerViewForApprovedStudentList.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_approved_studentlist_card, viewGroup, false);
-        return new RecyclerViewForApprovedStudentList.ViewHolder(view);
+    public RecyclerViewFor_ApprovedStudentList_Princi.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        CardView view = (CardView) LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.activity_approved_studentlist_card_princi, viewGroup, false);
+        return new RecyclerViewFor_ApprovedStudentList_Princi.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerViewForApprovedStudentList.ViewHolder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull RecyclerViewFor_ApprovedStudentList_Princi.ViewHolder viewHolder, final int i) {
         final int j;
         final CardView cardView = viewHolder.cardView;
         final Context context = cardView.getContext();
@@ -83,12 +83,12 @@ public class RecyclerViewForApprovedStudentList extends RecyclerView.Adapter<Rec
                 //classtList_princi.setArguments(bundle3);
                 Log.e("StudID",list.get( i ).getPhno());
 
-                Fragment fragment = new F_Admin_Approved_StudentDetails();
+                Fragment fragment = new F_Princi_Approved_StudentDetails();
                 //FragmentManager fragmentManager = getFragmentManager();;
                 fragment.setArguments( bundle3 );
                 FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frame_admin, fragment);
+                fragmentTransaction.replace(R.id.frame_princi, fragment);
                 fragmentTransaction.addToBackStack(null);
                 // fragmentTransaction.commit();*/
 

@@ -8,10 +8,10 @@
             android:id="@+id/nav_profile"
             android:icon="@drawable/ic_assignment_ind_black_24dp"
             android:title="@string/menu_profile" />
-       <!-- <item
-            android:id="@+id/nav_studentDetails"
+        <item
+            android:id="@+id/nav_addStudent"
             android:icon="@drawable/ic_group_add_black_24dp"
-            android:title="@string/menu_studentDetails" />-->
+            android:title="@string/menu_studentDetails" />
         <item
             android:id="@+id/nav_marks"
             android:icon="@drawable/ic_chrome_reader_mode_black_24dp"

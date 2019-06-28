@@ -8,8 +8,8 @@
     <android.support.v7.widget.RecyclerView
 
         android:id="@+id/recyclerfor_pendingrequest"
-        android:background="@drawable/bg_login"
         android:layout_width="match_parent"
+        android:background="#F5EEEE"
         android:layout_height="match_parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

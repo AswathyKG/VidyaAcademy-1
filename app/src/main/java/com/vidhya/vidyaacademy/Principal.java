@@ -33,6 +33,7 @@ public class Principal extends FragmentActivity
 
     CircleImageView  iv_profile_princi;
     TextView tv_navhead_princiname,tv_navhead_princimail;
+    String userid;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
@@ -69,11 +70,11 @@ public class Principal extends FragmentActivity
 
 
         Bundle bundle1=new Bundle();
-        addFragment(new F_Principal_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+        addFragment(new F_Principal_Profile(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
 
 
         sharedPreferences = getApplicationContext().getSharedPreferences( "MyShared", Context.MODE_PRIVATE );
-        String userid = sharedPreferences.getString( "userid", "" );
+        userid = sharedPreferences.getString( "userid", "" );
         databaseReference = FirebaseDatabase.getInstance().getReference( "users/principal/" + userid );
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
@@ -105,14 +106,24 @@ public class Principal extends FragmentActivity
     private void setSupportActionBar(Toolbar toolbar) {
     }
 
+
+
+
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 1) {
             super.onBackPressed();
+            moveTaskToBack( true );
+            finish();
+            //additional code
+            android.os.Process.killProcess( android.os.Process.myPid() );
+            System.exit( 1 );
+        } else {
+            getSupportFragmentManager().popBackStack();
         }
+
     }
 
     @Override
@@ -152,7 +163,7 @@ public class Principal extends FragmentActivity
             startActivity(i);*/
 
             Bundle bundle1=new Bundle();
-            addFragment(new F_Principal_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+            addFragment(new F_Principal_Profile(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
 
             // Handle the camera action
         } else if (id == R.id.nav_addAdmin) {
@@ -160,14 +171,14 @@ public class Principal extends FragmentActivity
             startActivity(i);*/
 
             Bundle bundle1=new Bundle();
-            addFragment(new F_AddAdmin(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+            addFragment(new F_AddAdmin(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
 
 
         } else if (id == R.id.nav_approval) {
             /*Intent i=new Intent(getApplicationContext(), Princi_AdminList.class);
             startActivity(i);*/
             Bundle bundle1=new Bundle();
-            addFragment(new F_Princi_AdminList(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+            addFragment(new F_Princi_AdminList(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
 
 
         } else if (id == R.id.nav_logoutP) {
@@ -189,11 +200,19 @@ public class Principal extends FragmentActivity
 
           /*  Intent i=new Intent(getApplicationContext(),Pending_Request.class);
             startActivity(i);*/
+            Bundle bundle1=new Bundle();
+            bundle1.putString( "AdminID",userid );
+            addFragment(new F_Princi_Pending(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+
 
         } else if (id == R.id.nav_approved) {
 
            /* Intent i=new Intent(getApplicationContext(),Approved.class);
             startActivity(i);*/
+            Bundle bundle1=new Bundle();
+            bundle1.putString( "AdminID",userid );
+            addFragment(new F_Princi_Approved(),true, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+
 
         }
 

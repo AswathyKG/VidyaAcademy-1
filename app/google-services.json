@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "971602469667-akas0debf1a7034lshrrjvi1rl844gv5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vidhya.vidyaacademy",
+            "certificate_hash": "4b2fe062c064cab7dc1c21c8c44811d6ab869ae4"
+          }
+        },
+        {
           "client_id": "971602469667-ssom69jcv2g7ko9slitg0pri8fs16po5.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

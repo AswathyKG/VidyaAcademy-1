@@ -40,7 +40,7 @@ public class Admin extends FragmentActivity
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
-    String Name, Email;
+    String Name, Email, userid;
 
 
     @Override
@@ -64,17 +64,17 @@ public class Admin extends FragmentActivity
         drawer.addDrawerListener( toggle );
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener( this );
-        View headerLayout = navigationView.getHeaderView(0);
-        iv_admin_photo=headerLayout.findViewById( R.id.iv_admin_photo_1 );
-        tv_navhead_adminname=headerLayout.findViewById( R.id.tv_navhead_adminname_1);
-        tv_navhead_adminmail=headerLayout.findViewById( R.id.tv_navhead_adminmail_1 );
+        View headerLayout = navigationView.getHeaderView( 0 );
+        iv_admin_photo = headerLayout.findViewById( R.id.iv_admin_photo_1 );
+        tv_navhead_adminname = headerLayout.findViewById( R.id.tv_navhead_adminname_1 );
+        tv_navhead_adminmail = headerLayout.findViewById( R.id.tv_navhead_adminmail_1 );
 
-        Bundle bundle1=new Bundle();
-        addFragment(new F_Admin_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+        Bundle bundle1 = new Bundle();
+        addFragment( new F_Admin_Profile(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", bundle1 );
 
 
         sharedPreferences = getApplicationContext().getSharedPreferences( "MyShared", Context.MODE_PRIVATE );
-        String userid = sharedPreferences.getString( "userid", "" );
+        userid = sharedPreferences.getString( "userid", "" );
         databaseReference = FirebaseDatabase.getInstance().getReference( "users/admin/" + userid );
         databaseReference.addValueEventListener( new ValueEventListener() {
             @Override
@@ -97,9 +97,7 @@ public class Admin extends FragmentActivity
 
 
                 }
-                }
-
-
+            }
 
 
             @Override
@@ -120,21 +118,33 @@ public class Admin extends FragmentActivity
 
     @Override
     public void onBackPressed() {
-        /*DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
+
+
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 1) {
             super.onBackPressed();
-        }*/
-
-        moveTaskToBack( true );
-
-        finish();
-
-        android.os.Process.killProcess( android.os.Process.myPid() );
-        System.exit( 1 );
+            moveTaskToBack( true );
+            finish();
+            //additional code
+            android.os.Process.killProcess( android.os.Process.myPid() );
+            System.exit( 1 );
+        } else {
+            getSupportFragmentManager().popBackStack();
+        }
 
     }
+
+        /*Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.fragment_pro);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+
+            //moveTaskToBack( true );
+            finish();
+            android.os.Process.killProcess( android.os.Process.myPid() );
+            System.exit( 1 );
+        }*/
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -144,8 +154,7 @@ public class Admin extends FragmentActivity
         return true;
     }
 
-/*
-    @Override
+   /* @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -158,8 +167,7 @@ public class Admin extends FragmentActivity
         }
 
         return super.onOptionsItemSelected(item);
-    }
-*/
+    }*/
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -172,18 +180,21 @@ public class Admin extends FragmentActivity
             /*Intent i = new Intent( getApplicationContext(), Admin_Profile.class );
             startActivity( i );*/
 
-            Bundle b1=new Bundle();
-            addFragment(new F_Admin_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",b1);
+            Bundle b1 = new Bundle();
+            addFragment( new F_Admin_Profile(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", b1 );
 
         }/* else if (id == R.id.nav_studentDetails) {
 
         }*/ else if (id == R.id.nav_marks) {
            /* Intent i=new Intent(getApplicationContext(),Marks.class);
             startActivity(i);*/
+            Bundle b2 = new Bundle();
+            addFragment( new Enter_Student_MarkDetails(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", b2 );
+
 
         } else if (id == R.id.nav_view) {
-            Bundle b2=new Bundle();
-            addFragment(new F_Admin_ClassList_list(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",b2);
+            Bundle b2 = new Bundle();
+            addFragment( new F_Admin_ClassList_list(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", b2 );
 
 
         } else if (id == R.id.nav_logout) {
@@ -206,16 +217,24 @@ public class Admin extends FragmentActivity
             /*Intent i = new Intent( getApplicationContext(), Pending_Request.class );
             startActivity( i );*/
 
-            Bundle b1=new Bundle();
-            addFragment(new F_Admin_Pending(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",b1);
+            Bundle b1 = new Bundle();
+            b1.putString( "AdminID", userid );
+            addFragment( new F_Admin_Pending_Classlist(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", b1 );
 
 
-        }else if (id == R.id.nav_approved_list) {
+        } else if (id == R.id.nav_approved_list) {
             /*Intent i = new Intent( getApplicationContext(), Approved.class );
             startActivity( i );*/
-            Bundle b1=new Bundle();
-            addFragment(new F_Admin_Approved(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",b1);
+            Bundle b1 = new Bundle();
+            b1.putString( "AdminID", userid );
+            addFragment( new F_Admin_Approved_Classlist(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", b1 );
 
+
+        }
+        else if (id == R.id.nav_addStudent){
+            Bundle b1 = new Bundle();
+            b1.putString( "AdminID", userid );
+            addFragment( new F_AddStudent(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", b1 );
 
         }
 
@@ -228,11 +247,11 @@ public class Admin extends FragmentActivity
                             int transition, String name, Bundle bndle) {
         FragmentTransaction ft = Admin.this
                 .getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame_admin, fragment);
-        ft.setTransition(transition);
-        fragment.setArguments(bndle);
+        ft.replace( R.id.frame_admin, fragment );
+        ft.setTransition( transition );
+        fragment.setArguments( bndle );
         if (addToBackStack)
-            ft.addToBackStack(name);
+            ft.addToBackStack( name );
         ft.commit();
     }
 }

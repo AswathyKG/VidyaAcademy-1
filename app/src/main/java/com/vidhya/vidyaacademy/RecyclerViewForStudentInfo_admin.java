@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -74,7 +75,7 @@ public class RecyclerViewForStudentInfo_admin extends RecyclerView.Adapter<Recyc
                 Log.e("nadeem",uids);
 
 
-                Intent intent = new Intent(context, MainActivty_Tab.class);
+                Intent intent = new Intent(v.getContext(), MainActivty_Tab.class);
                 intent.putExtra("Student Name",list.get(i).getRegno());
                 intent.putExtra("UID",uids);
                 context.startActivity(intent);
@@ -83,17 +84,14 @@ public class RecyclerViewForStudentInfo_admin extends RecyclerView.Adapter<Recyc
                 bundle3.putString("UID",uids);
                 bundle3.putString("Student Name",list.get(i).getRegno());
 
-*/
-               // Fragment fragment = new F_StudentList_Admin();
-                //FragmentManager fragmentManager = getFragmentManager();;
-                //fragment.setArguments( bundle3 );
-               // FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
-                //FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-              //  fragmentTransaction.replace(R.id.frame_princi, fragment);
-               // fragmentTransaction.addToBackStack(null);
-                // fragmentTransaction.commit();*/
-
-               // fragmentTransaction.commit();
+               Fragment fragment = new MyAdapter_Tab();
+               // FragmentManager fragmentManager = getFragmentManager();;
+                fragment.setArguments( bundle3 );
+                FragmentManager fragmentManager =  ((FragmentActivity)context).getSupportFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+              fragmentTransaction.replace(R.id.frame_princi, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();*/
             }
         });
 

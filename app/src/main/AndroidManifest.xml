@@ -2,6 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.vidhya.vidyaacademy">
+    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
+    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -24,7 +29,7 @@
             android:name=".Login"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".Enter_Student_Details"
+            android:name=".Enter_Student_MarkDetails"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Admin"

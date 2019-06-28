@@ -22,10 +22,10 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class F_Admin_Approved extends Fragment {
+public class F_Princi_Pending extends Fragment {
 
 
-    ArrayList<Approved_Adapter> approvedAdapterArrayList;
+    ArrayList<Peding_Request_Adapter> pedingRequestAdapterArrayList;
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     SharedPreferences sharedPreferences;
     DatabaseReference databaseReference;
@@ -34,23 +34,19 @@ public class F_Admin_Approved extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fragment_recy_pending_request, container, false);
 
-        View view = inflater.inflate(R.layout.fragment_recy_approved, container, false);
 
 
-       /* Intent i = getIntent();
-        final String UID = i.getStringExtra("admin_list");
-*/
-
-        approvedAdapterArrayList = new ArrayList<Approved_Adapter>();
+        pedingRequestAdapterArrayList = new ArrayList<Peding_Request_Adapter>();
         databaseReference = FirebaseDatabase.getInstance().getReference("users/admin");
-        final RecyclerView recyclerforapproved = (RecyclerView)view. findViewById(R.id.recyclerfor_approved);
+        final RecyclerView recyclerforpendingrequest = (RecyclerView) view.findViewById(R.id.recyclerfor_pendingrequest);
 
-        recyclerforapproved.setHasFixedSize(true);
+        recyclerforpendingrequest.setHasFixedSize(true);
 
         LinearLayoutManager layoutManagern = new LinearLayoutManager(getActivity());
 
-        recyclerforapproved.setLayoutManager(layoutManagern);
+        recyclerforpendingrequest.setLayoutManager(layoutManagern);
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -59,13 +55,13 @@ public class F_Admin_Approved extends Fragment {
 
                     Log.e("Admin_List", dataSnapshot1.getChildren().toString());
 
-                    Approved_Adapter approvedAdapter = new Approved_Adapter(dataSnapshot1.child("name").getValue().toString(), dataSnapshot1.getKey().toString(), dataSnapshot1.child("image").getValue().toString());
-                    approvedAdapterArrayList.add(approvedAdapter);
+                    Peding_Request_Adapter peding_request_adapter = new Peding_Request_Adapter(dataSnapshot1.child("name").getValue().toString(), dataSnapshot1.getKey().toString(), dataSnapshot1.child("image").getValue().toString());
+                    pedingRequestAdapterArrayList.add(peding_request_adapter);
 
 
                 }
-                RecyclerViewForApproved recyclerViewForApproved = new RecyclerViewForApproved(getActivity(), approvedAdapterArrayList);
-                recyclerforapproved.setAdapter(recyclerViewForApproved);
+                RecyclerViewForPednding_Request pednding_request = new RecyclerViewForPednding_Request(getActivity(), pedingRequestAdapterArrayList);
+                recyclerforpendingrequest.setAdapter(pednding_request);
 
             }
 
@@ -75,8 +71,6 @@ public class F_Admin_Approved extends Fragment {
 
             }
         });
-
-
         return view;
     }
 }

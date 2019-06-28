@@ -1,7 +1,6 @@
 package com.vidhya.vidyaacademy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -87,7 +86,7 @@ public class F_Admin_Pending_Studentlist extends Fragment {
                     }
 
                 }
-                RecyclerViewForPendingStudentList playAdapter1 = new RecyclerViewForPendingStudentList(getActivity(), arrayList, ClassID, AdminID);
+                RecyclerViewFor_PendingStudentList_Admin playAdapter1 = new RecyclerViewFor_PendingStudentList_Admin(getActivity(), arrayList, ClassID, AdminID);
                 princi_recyclerforstudcard.setAdapter(playAdapter1);
 
             }

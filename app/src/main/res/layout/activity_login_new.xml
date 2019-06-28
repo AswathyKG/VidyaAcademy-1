@@ -29,6 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            android:paddingLeft="@dimen/login_layout_padding"
+            android:paddingRight="@dimen/login_layout_padding"
             android:paddingTop="@dimen/login_layout_padding_top"
             android:weightSum="1">
 
@@ -36,6 +38,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
                 android:foregroundTint="@color/gray"
                 app:passwordToggleTint="@color/gray">
@@ -56,6 +60,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
                 android:layout_marginBottom="8dp"
                 android:foregroundTint="#000000"
                 app:passwordToggleTint="#000000">
@@ -83,7 +89,7 @@
                 android:textColor="#fff"
                 android:textStyle="bold" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tv_login_register"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -93,7 +99,7 @@
                 android:text="Not a member? Register"
                 android:textColor="#7A7B7C"
                 android:textColorHint="#D6EAF8"
-                android:textSize="14dip" />
+                android:textSize="14dip" />-->
 
             <TextView
                 android:id="@+id/tv_login_forgot"
@@ -101,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:gravity="center"
+                android:paddingTop="10dp"
                 android:text="Forgot password?"
                 android:textColor="#7A7B7C"
                 android:textColorHint="#D6EAF8"
@@ -116,7 +123,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_new_login" />
+                android:background="@drawable/achu1" />
         </LinearLayout>
 
 

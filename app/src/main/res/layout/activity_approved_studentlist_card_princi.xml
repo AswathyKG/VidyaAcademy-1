@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/approved_studentlist_cardview"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:layout_margin="10dp"
+    android:elevation="3dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/iv_student_photo_ap"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:background="@drawable/ic_person_black_24dp"
+            app:civ_border_color="#cccccc"
+            app:civ_border_width="2dp" />
+
+        <!-- <pl.droidsonroids.gif.GifImageView
+             android:id="@+id/princi_iv_student_photo"
+             android:layout_width="120dp"
+             android:layout_height="120dp"
+             android:background="@drawable/load_basic" />-->
+
+        <!-- <ImageView
+             android:id="@+id/iv_student_photo"
+             android:layout_width="120dp"
+             android:layout_height="120dp"
+             android:layout_alignParentTop="true"
+             android:layout_marginTop="0dp"
+             android:adjustViewBounds="true"
+             android:scaleType="centerCrop"
+              />-->
+
+        <TextView
+            android:id="@+id/tv_ap_name"
+            android:layout_width="wrap_content"
+            android:textColor="#000"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:layout_toRightOf="@+id/iv_student_photo_ap"
+            android:text="Student Name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_ap_reg_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ap_name"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/iv_student_photo_ap"
+            android:text="Register no:"
+            android:textSize="13sp"
+            android:textColor="#000"
+            android:textStyle="italic" />
+
+
+        <TextView
+            android:id="@+id/tv_ap_grade"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:layout_below="@id/tv_ap_reg_no"
+            android:layout_marginLeft="7dp"
+            android:layout_toRightOf="@+id/iv_student_photo_ap"
+            android:text="Total Grade" />
+
+
+        <!--<TextView
+            android:id="@+id/tv_princi_card_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_princi_card__grade"
+            android:layout_margin="7dp"
+            android:layout_toRightOf="@+id/princi_iv_student_photo"
+            android:text="Address"
+            android:textAllCaps="false"
+            android:textStyle="italic" />-->
+
+
+        <TextView
+            android:id="@+id/tv_ap_read_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_ap_grade"
+            android:layout_margin="7dp"
+            android:layout_toRightOf="@+id/iv_student_photo_ap"
+            android:text="Read More..."
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="italic" />
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+

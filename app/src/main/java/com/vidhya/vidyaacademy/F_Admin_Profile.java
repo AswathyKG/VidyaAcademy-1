@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,11 +23,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class F_Admin_Profile extends Fragment {
+import de.hdodenhof.circleimageview.CircleImageView;
+
+public class F_Admin_Profile extends Fragment implements IOnBackPressed {
 
 
     TextView tv_profile_a_name,tv_profile_a_address,tv_profile_a_phno,tv_profile_a_email;
-    ImageView iv_profile_admin;
+    CircleImageView iv_profile_admin;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
@@ -91,5 +95,12 @@ public class F_Admin_Profile extends Fragment {
             }
         });
         return  view;
+
+
+    }
+
+    @Override
+    public boolean onBackPressed() {
+        return true;
     }
 }

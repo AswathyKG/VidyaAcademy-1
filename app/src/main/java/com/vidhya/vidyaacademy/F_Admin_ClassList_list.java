@@ -63,8 +63,10 @@ public class F_Admin_ClassList_list extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 itemlist.clear();
+                arrayList.clear();
                 for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
                     /*for (DataSnapshot dataSnapshot2 : dataSnapshot.getChildren()) {*/
+
                     Log.e(TAG, dataSnapshot1.getKey());
                     /*}*/
 
@@ -117,10 +119,10 @@ public class F_Admin_ClassList_list extends Fragment {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Toast.makeText(getActivity(),"clicked on"+position,Toast.LENGTH_SHORT).show();
-                        /*Intent i=new Intent(getActivity(), F_StudentList_Admin.class);
+                        Intent i=new Intent(getActivity(), MainActivty_Tab.class);
                         i.putExtra("student_list",arrayList.get(position));
                         Log.e("position",arrayList.get(position));
-                        startActivity(i);*/
+                        startActivity(i);
 /*
                         Bundle bundle3=new Bundle();
                         bundle3.putString("student_list",arrayList.get(position));

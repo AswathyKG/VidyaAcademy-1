@@ -12,7 +12,6 @@
         android:fitsSystemWindows="true">
 
 
-
         <pl.droidsonroids.gif.GifImageView
             android:id="@+id/iv_profile_student"
             android:layout_width="match_parent"
@@ -24,8 +23,202 @@
             app:layout_collapseParallaxMultiplier="0.7" />
 
 
-        <include layout="@layout/activity_content_student_profile" />
+        <!--<include layout="@layout/activity_content_student_profile" />-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/iv_profile_student"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:background="#ffffff"
+            android:padding="@dimen/activity_horizontal_margin">
 
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <ImageView
+                            android:id="@+id/iv_profile_icon_a_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                            app:srcCompat="@drawable/ic_account_circle_black_24dp" />
+
+                        <TextView
+                            android:id="@+id/tv_profile_stud_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_name"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#212121" />
+
+                        <EditText
+                            android:id="@+id/et_profile_stud_name"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/tv_profile_stud_name"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_marginTop="8dp"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_name"
+                            android:text="Name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="#727272" />
+
+
+                    </RelativeLayout>
+
+
+                    <include layout="@layout/activity_item_divider" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <ImageView
+                            android:id="@+id/iv_profile_icon_a_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                            app:srcCompat="@drawable/ic_location_on_black" />
+
+                        <TextView
+                            android:id="@+id/tv_profile_stud_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_address"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Address"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#212121" />
+
+                        <EditText
+                            android:id="@+id/et_profile_stud_address"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/tv_profile_stud_address"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_marginTop="8dp"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_address"
+                            android:text="Address"
+                            android:textColor="#727272" />
+
+
+                    </RelativeLayout>
+
+                    <!--<include layout="@layout/activity_item_divider" />-->
+
+                    <!--<RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <ImageView
+                            android:id="@+id/iv_profile_icon_a_phno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                            app:srcCompat="@drawable/ic_phone_black" />
+
+                        <TextView
+                            android:id="@+id/tv_profile_a_phno"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_phno"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Phone No"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#212121" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/tv_profile_a_phno"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_marginTop="8dp"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_phno"
+                            android:text="Phone No"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                            android:textColor="#727272" />
+
+
+
+                    </RelativeLayout>
+        -->
+                    <include layout="@layout/activity_item_divider" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:padding="@dimen/activity_horizontal_margin">
+
+                        <ImageView
+                            android:id="@+id/iv_profile_icon_a_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+                            app:srcCompat="@drawable/ic_email_black" />
+
+                        <TextView
+                            android:id="@+id/tv_profile_stud_parentname"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_email"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Parent Name"
+                            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                            android:textColor="#212121" />
+
+                        <EditText
+                            android:id="@+id/et_profile_stud_parentname"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_below="@id/tv_profile_stud_parentname"
+                            android:layout_marginStart="@dimen/activity_horizontal_margin"
+                            android:layout_marginTop="8dp"
+                            android:layout_toEndOf="@id/iv_profile_icon_a_email"
+                            android:text="Parent Name"
+                            android:textColor="#727272" />
+
+
+                    </RelativeLayout>
+
+
+                    <include layout="@layout/activity_item_divider" />
+                </LinearLayout>
+            </ScrollView>
+        </RelativeLayout>
 
     </RelativeLayout>
 

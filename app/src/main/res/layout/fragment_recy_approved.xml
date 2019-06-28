@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5EEEE"
+    android:id="@+id/root_f_approved"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.RecyclerView
 
         android:id="@+id/recyclerfor_approved"
-        android:background="@drawable/bg_login"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgv_2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <LinearLayout
+        android:id="@+id/imgv_2"
+        app:layout_constraintBottom_toBottomOf="@+id/root_f_approved"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:orientation="vertical">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/achu1" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

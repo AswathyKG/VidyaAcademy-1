@@ -2,44 +2,35 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/bg_login">
-
-
+    android:layout_height="match_parent">
 
 
     <RelativeLayout
         android:id="@+id/approved_stud_"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="50dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/bg_white">
+        android:layout_height="match_parent">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+        <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/tv_stud_photo_approved"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:layout_marginTop="0dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="0dp"
             android:background="@drawable/ic_person_black_24dp"
             app:civ_border_color="#cccccc"
             app:civ_border_width="2dp" />
 
 
-
-
-
         <LinearLayout
-            android:layout_below="@+id/tv_stud_photo_approved"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:id="@+id/name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_stud_photo_approved"
             android:layout_marginTop="10dp"
             android:orientation="horizontal"
             android:weightSum="1">
@@ -53,17 +44,22 @@
                 android:textColor="#000" />
 
             <TextView
-                android:gravity="left"
                 android:id="@+id/tv_stud_name_approved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".50"
+                android:gravity="left"
                 android:hint="StudentName"
                 android:textColor="#000" />
 
         </LinearLayout>
 
         <LinearLayout
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:id="@+id/address"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,17 +77,23 @@
                 android:textColor="#000" />
 
             <TextView
-                android:gravity="left"
                 android:id="@+id/tv_stud_address_approved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".50"
+                android:gravity="left"
                 android:hint="StudentAddress"
                 android:textColor="#000" />
 
         </LinearLayout>
 
         <LinearLayout
+
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="20dp"
             android:id="@+id/parent_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -109,63 +111,75 @@
                 android:textColor="#000" />
 
             <TextView
-                android:gravity="left"
                 android:id="@+id/tv_stud_pname_approved"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight=".50"
+                android:gravity="left"
                 android:hint="StudentParentName"
                 android:textColor="#000" />
 
         </LinearLayout>
 
-<!--
+        <!--
+                <LinearLayout
+
+                    android:id="@+id/btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/parent_name"
+                    android:layout_marginTop="40dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight=".05" />
+
+                    <Button
+
+                        android:id="@+id/btn_cancel_princi_studdetails"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".40"
+                        android:background="#F86356"
+                        android:gravity="center"
+                        android:text="Cancel"
+                        android:textColor="#000" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight=".1" />
+
+                    <Button
+                        android:id="@+id/btn_approve_princi_studdetails"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".40"
+                        android:background="#4CAF50"
+                        android:gravity="center"
+                        android:text="Approve"
+                        android:textColor="#000" />
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight=".05" />
+
+                </LinearLayout>
+        -->
         <LinearLayout
-
-            android:id="@+id/btn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/parent_name"
-            android:layout_marginTop="40dp"
-            android:orientation="horizontal"
-            android:weightSum="1">
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight=".05" />
+            android:layout_height="200dp"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
 
-            <Button
-
-                android:id="@+id/btn_cancel_princi_studdetails"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".40"
-                android:background="#F86356"
-                android:gravity="center"
-                android:text="Cancel"
-                android:textColor="#000" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight=".1" />
-
-            <Button
-                android:id="@+id/btn_approve_princi_studdetails"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".40"
-                android:background="#4CAF50"
-                android:gravity="center"
-                android:text="Approve"
-                android:textColor="#000" />
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight=".05" />
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/achu1" />
         </LinearLayout>
--->
+
 
     </RelativeLayout>
 

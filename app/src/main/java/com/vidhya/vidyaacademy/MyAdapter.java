@@ -1,6 +1,7 @@
 package com.vidhya.vidyaacademy;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -41,6 +42,7 @@ public class MyAdapter extends ArrayAdapter {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Bundle bundle3=new Bundle();
                 bundle3.putString("student_list",arrayList.get(position));
 
@@ -53,7 +55,7 @@ public class MyAdapter extends ArrayAdapter {
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.frame_admin, fragment);
                 fragmentTransaction.addToBackStack(null);
-                // fragmentTransaction.commit();*/
+                // fragmentTransaction.commit();
 
                 fragmentTransaction.commit();
 

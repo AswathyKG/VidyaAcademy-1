@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.v4.view.GravityCompat;
@@ -19,15 +20,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
-public class Parent extends AppCompatActivity
+public class Parent extends FragmentActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_parent_new);
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        super.onCreate( savedInstanceState );
+        setContentView( R.layout.activity_parent_new );
+        Toolbar toolbar = findViewById( R.id.toolbar );
+        setSupportActionBar( toolbar );
         /*FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
 
@@ -38,33 +39,43 @@ public class Parent extends AppCompatActivity
                         .setAction("Action", null).show();
             }
         });*/
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        DrawerLayout drawer = findViewById( R.id.drawer_layout );
+        NavigationView navigationView = findViewById( R.id.nav_view );
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close );
+        drawer.addDrawerListener( toggle );
         toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setNavigationItemSelectedListener( this );
 
 
-        Bundle bundle1=new Bundle();
-        addFragment(new F_Parent_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+        Bundle bundle1 = new Bundle();
+        addFragment( new F_Parent_Profile(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", bundle1 );
+    }
+
+    private void setSupportActionBar(Toolbar toolbar) {
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        if (count == 1) {
             super.onBackPressed();
+            moveTaskToBack( true );
+            finish();
+            //additional code
+            android.os.Process.killProcess( android.os.Process.myPid() );
+            System.exit( 1 );
+        } else {
+            getSupportFragmentManager().popBackStack();
         }
+
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.parent_new, menu);
+        getMenuInflater().inflate( R.menu.parent_new, menu );
         return true;
     }
 
@@ -80,7 +91,7 @@ public class Parent extends AppCompatActivity
             return true;
         }*/
 
-        return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected( item );
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -95,19 +106,23 @@ public class Parent extends AppCompatActivity
            /* Intent i=new Intent(getApplicationContext(),Parent_About.class);
             startActivity(i);*/
 
-            Bundle bundle2=new Bundle();
-            addFragment(new F_Parent_About(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle2);
+            Bundle bundle2 = new Bundle();
+            addFragment( new F_Parent_About(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", bundle2 );
 
 
-        }else if (id == R.id.nav_contact) {
+        } else if (id == R.id.nav_help) {
+            Bundle bundle2 = new Bundle();
+            addFragment( new F_Parent_Help(), true, FragmentTransaction.TRANSIT_NONE, "Help", bundle2 );
 
-        }  else if (id == R.id.nav_profilePa) {
+        } else if (id == R.id.nav_LiveVideo) {
+
+        } else if (id == R.id.nav_profilePa) {
            /* Intent i=new Intent(getApplicationContext(),Parent_Profile.class);
             startActivity(i);*/
 
 
-            Bundle bundle1=new Bundle();
-            addFragment(new F_Parent_Profile(),false, FragmentTransaction.TRANSIT_NONE,"Parent_Profile",bundle1);
+            Bundle bundle1 = new Bundle();
+            addFragment( new F_Parent_Profile(), true, FragmentTransaction.TRANSIT_NONE, "Parent_Profile", bundle1 );
 
         } else if (id == R.id.nav_logoutPa) {
 
@@ -126,8 +141,8 @@ public class Parent extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        DrawerLayout drawer = findViewById( R.id.drawer_layout );
+        drawer.closeDrawer( GravityCompat.START );
         return true;
     }
 
@@ -135,11 +150,11 @@ public class Parent extends AppCompatActivity
                             int transition, String name, Bundle bndle) {
         FragmentTransaction ft = Parent.this
                 .getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.frame_parent, fragment);
-        ft.setTransition(transition);
-        fragment.setArguments(bndle);
+        ft.replace( R.id.frame_parent, fragment );
+        ft.setTransition( transition );
+        fragment.setArguments( bndle );
         if (addToBackStack)
-            ft.addToBackStack(name);
+            ft.addToBackStack( name );
         ft.commit();
     }
 }

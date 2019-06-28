@@ -1,7 +1,6 @@
 package com.vidhya.vidyaacademy;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -91,7 +90,7 @@ public class F_Admin_Approved_Studentlist extends Fragment {
                     }
 
                 }
-                RecyclerViewForApprovedStudentList playAdapter1 = new RecyclerViewForApprovedStudentList(getActivity(),arrayList,ClassID,AdminID);
+                RecyclerViewFor_ApprovedStudentList_Admin playAdapter1 = new RecyclerViewFor_ApprovedStudentList_Admin(getActivity(),arrayList,ClassID,AdminID);
                 princi_recyclerforstudcard.setAdapter(playAdapter1);
 
             }

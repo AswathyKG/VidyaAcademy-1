@@ -9,17 +9,18 @@
             android:icon="@drawable/ic_menu_camera"
             android:title="Home" />
         <item
+            android:id="@+id/nav_LiveVideo"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Live Video" />
+        <item
             android:id="@+id/nav_about"
             android:icon="@drawable/ic_menu_gallery"
             android:title="About Us" />
        <item
-            android:id="@+id/nav_contact"
+            android:id="@+id/nav_help"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Contact" />
-     <!--   <item
-            android:id="@+id/nav_tools"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />-->
+            android:title="Help" />
+
     </group>
 
 

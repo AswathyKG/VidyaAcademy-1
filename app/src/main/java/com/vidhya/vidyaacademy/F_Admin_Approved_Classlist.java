@@ -1,6 +1,5 @@
 package com.vidhya.vidyaacademy;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -89,7 +88,7 @@ F_Admin_Approved_Classlist extends Fragment {
 
 
                 }
-                RecyclerViewFor_ApprovedClasslist recyclerViewForApprovedClasslist = new RecyclerViewFor_ApprovedClasslist( getActivity(), arrayList1,AdminID );
+                RecyclerViewFor_ApprovedClasslist_Admin recyclerViewForApprovedClasslist = new RecyclerViewFor_ApprovedClasslist_Admin( getActivity(), arrayList1,AdminID );
                 recyclerView.setAdapter( recyclerViewForApprovedClasslist );
 
             }
