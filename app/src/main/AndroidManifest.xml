@@ -2,11 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.vidhya.vidyaacademy">
-    <uses-permission android:name="android.permission.SEND_SMS"></uses-permission>
-    <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 
     <application
         android:allowBackup="true"
@@ -15,15 +16,17 @@
         android:roundIcon="@drawable/vidhya_logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity
-            android:name=".SplashScreen"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".LiveStreaming">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+
         </activity>
         <activity
             android:name=".Login"
@@ -44,7 +47,6 @@
         <activity
             android:name=".Parent"
             android:theme="@style/AppTheme.NoActionBar" />
-
     </application>
 
 </manifest>

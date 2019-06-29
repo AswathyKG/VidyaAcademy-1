@@ -5,7 +5,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.vidhya.vidyaacademy"
-        minSdkVersion 19
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -19,6 +19,12 @@ android {
         }
     }
 }
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -54,7 +60,7 @@ dependencies {
     implementation 'com.mikhaellopez:circularimageview:2.0.1'
     implementation 'com.github.rey5137:material:1.2.2'
     implementation 'com.makeramen:roundedimageview:2.2.1'
-
+    implementation 'com.wowza.gocoder.sdk.android:com.wowza.gocoder.sdk:2.0.0@aar'
     implementation 'com.basgeekball:awesome-validation:2.0'
 
 }
