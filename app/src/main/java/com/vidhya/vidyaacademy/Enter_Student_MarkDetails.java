@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class Enter_Student_MarkDetails extends Fragment {
 
     EditText edt_addstud_class_md,edt_addstud_regno_md;
@@ -32,6 +34,9 @@ public class Enter_Student_MarkDetails extends Fragment {
     TableRow tr[] = new TableRow[9];
     EditText txt[] = new EditText[9];
     EditText txt1[] = new EditText[9];
+    ArrayList<Integer> arrayList = new ArrayList<>();
+    ArrayList<EditText> txt2 = new ArrayList<>();
+    ArrayList<EditText> txt3 = new ArrayList<>();
     //ImageView img[] = new ImageView[5];
     Button img[]=new Button[9];
     int count ;
@@ -51,33 +56,34 @@ public class Enter_Student_MarkDetails extends Fragment {
 
         View view=inflater.inflate( R.layout.enter_student_details
                 ,container,false );
-        btn_enter_student_mark_details=view.findViewById( R.id.btn_enter_student_mark_details );
+        btn_enter_student_mark_details=(Button) view.findViewById( R.id.btn_enter_student_mark_details );
         sharedPreferences = getActivity().getSharedPreferences( "MyShared", Context.MODE_PRIVATE );
         admin = sharedPreferences.getString( "userid", "" );
-        edt_addstud_regno_md=view.findViewById( R.id.edt_addstud_regno_md );
-        edt_addstud_class_md=view.findViewById( R.id.edt_addstud_class_md );
+        edt_addstud_regno_md=(EditText) view.findViewById( R.id.edt_addstud_regno_md );
+        edt_addstud_class_md=(EditText) view.findViewById( R.id.edt_addstud_class_md );
 
 
 
         // Log.d("","On Create");
         con = this.getActivity();
-        count = 1;
+        count = 0;
 
         table = (TableLayout)view.findViewById(R.id.imageLin);
         tr[count] = new TableRow(this.getActivity());
         tr[count].setId(count);
         tr[count].setLayoutParams(new TableRow.LayoutParams(    TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.MATCH_PARENT));
 
-        txt[count] = new EditText(this.getActivity());
-        txt[count].setId(count);
-        txt[count].setText("1");
-        txt[count].setMaxLines(1);
-        txt[count].setWidth(250);
-        txt1[count] = new EditText(this.getActivity());
-        txt1[count].setId(count);
-        txt1[count].setText("1");
-        txt1[count].setMaxLines(1);
-        txt1[count].setWidth(250);
+        txt2.add( new EditText(this.getActivity()));
+        txt2.get(count).setId(count);
+        txt2.get(count).setText("1");
+        txt2.get(count).setMaxLines(1);
+        txt2.get(count).setWidth(250);
+        txt3.add( new EditText(this.getActivity()));
+        txt3.get(count).setId(count);
+        txt3.get(count).setText("1");
+        txt3.get(count).setMaxLines(1);
+        txt3.get(count).setWidth(250);
+
 
         img[count] = new Button(this.getActivity());
         img[count].setId(count);
@@ -86,8 +92,8 @@ public class Enter_Student_MarkDetails extends Fragment {
         img[count].setPadding(5, 7, 20, 0);
 
 
-        tr[count].addView(txt[count]);
-        tr[count].addView(txt1[count]);
+        tr[count].addView(txt2.get(count));
+        tr[count].addView(txt3.get(count));
         tr[count].addView(img[count]);
         tr[count].setPadding(20, 20, 20, 20);
 
@@ -104,26 +110,17 @@ public class Enter_Student_MarkDetails extends Fragment {
                 regno=edt_addstud_regno_md.getText().toString();
 
 
-                databaseReference=firebaseDatabase.getReference("users/admin/" + admin + classname + regno );
-                databaseReference.addListenerForSingleValueEvent( new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               // databaseReference=firebaseDatabase.getReference("users/admin/" + admin + classname + regno );
 
 
-/*
-                        for(int i = 0;i < txt.length;i++) {
-                            String name = txt[i].getText().toString();
-                            databaseReference.child( name ).setVallue( name );
-                        }*/
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        for(int i = 0;i < txt2.size();i++) {
 
-                    }
-                } );
-            }
-        } );
+                           Log.e("WElldone", txt2.get(i).getText().toString());
+                            // databaseReference.child( name ).setVallue( name;}
+
+                        }
+            }});
 
 
         return view;
@@ -155,8 +152,8 @@ public class Enter_Student_MarkDetails extends Fragment {
                     isDel=true;
                     count=id;
                     lastDeletedIndex=id;
-                    txt[count]=null;
-                    txt1[count] = null;
+                    txt2.remove(count);
+                    txt3.remove(count);
                     img[count]=null;
                     table.removeView(tr[count]);
                     tr[count]=null;
@@ -193,20 +190,20 @@ public class Enter_Student_MarkDetails extends Fragment {
                         img[count].setPadding(3, 7, 20, 0);
                         img[count].setOnClickListener(new OnClick(img[count]));
 
-                        txt[count] = new EditText(con);
-                        txt[count].setId( count);
-                        txt[count].setText(""+count);
-                        txt[count].setMaxLines(1);
-                        txt[count].setWidth(250);
+                        txt2.add( new EditText(con));
+                        txt2.get(count).setId(count);
+                        txt2.get(count).setText(""+count);
+                        txt2.get(count).setMaxLines(1);
+                        txt2.get(count).setWidth(250);
 
-                        txt1[count] = new EditText(con);
-                        txt1[count].setId( count);
-                        txt1[count].setText(""+count);
-                        txt1[count].setMaxLines(1);
-                        txt1[count].setWidth(250);
+                        txt3.add( new EditText(con));
+                        txt3.get(count).setId(count);
+                        txt3.get(count).setText(""+count);
+                        txt3.get(count).setMaxLines(1);
+                        txt3.get(count).setWidth(250);
 
-                        tr[count].addView(txt[count]);
-                        tr[count].addView(txt1[count]);
+                        tr[count].addView(txt2.get(count));
+                        tr[count].addView(txt3.get(count));
 
                         tr[count].addView(img[count]);
 
